@@ -8,13 +8,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Function to open modal
     function openModal(modal) {
-        modalContainer.style.display = "flex";  // Show the modal container
-        aboutUsModal.style.display = "none";     // Hide all other modals
+        modalContainer.style.display = "flex"; 
+        aboutUsModal.style.display = "none"; 
         tableModal.style.display = "none";
         cartModal.style.display = "none";
-        modal.style.display = "block";            // Show the selected modal
+        modal.style.display = "block";   
     }
-    // Click event listeners for the navigation links
     document.getElementById("trigger").onClick = function() {
         openModal(aboutUsModal);
     };
@@ -29,10 +28,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.querySelectorAll(".close").forEach(function(closeButton) {
         closeButton.onclick = function() {
-            modalContainer.style.display = "none";  // Hide the modal container
+            modalContainer.style.display = "none";  
         };
     });
-    // Optional: Close modal when clicking outside of it
     modalContainer.onclick = function(event) {
         if (event.target === modalContainer) {
             modalContainer.style.display = "none";

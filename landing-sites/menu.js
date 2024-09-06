@@ -47,7 +47,6 @@ function createMenuCard(dishName, dishData, index) {
     let quantityWrapper = document.createElement('div');
     quantityWrapper.classList.add('quantity-wrapper');
 
-    // Create increment and decrement buttons and quantity display
     let decrementButton = document.createElement('input');
     decrementButton.classList.add('button-group', 'btn');
     decrementButton.type = 'button';
@@ -57,7 +56,7 @@ function createMenuCard(dishName, dishData, index) {
     let inputValue = document.createElement('input');
     inputValue.classList.add('button-group', 'output-area');
     inputValue.type = "text";
-    inputValue.id = `output-area-${index}`;  // Unique ID for each card
+    inputValue.id = `output-area-${index}`;  
     inputValue.value = "0";
     inputValue.readOnly = true;
 
@@ -84,17 +83,16 @@ function createMenuCard(dishName, dishData, index) {
 
 function renderMenu(menu, containerId) {
     const container = document.getElementById(containerId);
-    container.innerHTML = ''; // Clear the existing menu
-
-    let index = 0; // Keep track of index for unique IDs
+    container.innerHTML = ''; 
+    let index = 0;
     menu.forEach((dishData, dishName) => {
         const card = createMenuCard(dishName, dishData, index);
         container.appendChild(card);
-        index++; // Increment index for each menu card
+        index++;
     });
 }
 
-// Listen to active menu and render appropriate one
+
 function checkActiveMenu() {
     const circles = document.querySelectorAll('.small-circle');
     let activeMenu = null;
