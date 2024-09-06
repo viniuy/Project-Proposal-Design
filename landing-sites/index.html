@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="style.css">
+    <title>Restaurant</title>
+</head>
+<body>
+
+    <!-- Navigation Bar And Logo Design -->
+        <nav>
+            <input type="checkbox" id="topbar-active">
+            <label for="topbar-active" class="open-topbar-button">
+                <img src="../components/menu-alt-1-svgrepo-com.png">
+            </label>
+            <div class="links-container one">
+                <label for="topbar-active" class="close-topbar-button">
+                    <img src="../components/close-sm-svgrepo-com.png">
+                </label>
+                <ul class="nav_links">
+                    <li>
+                        <a id="trigger">HOME</a>
+                    </li>
+                    <li>
+                        <a id="trigger-aboutUs">ABOUT US</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <label for="menu-active" class="open-menu-button">
+                    <img src="../components/Kaze Ramen.png" alt="big-logo" id="big-logo" class="big-logo load" width="69" height="69">
+                </label>
+                <img src="../components/Wings.png" alt="japanese-wave" class="japanese-wave">
+            </div>
+            <div class="links-container two">
+                <ul class="nav_links_right">
+                    <li>
+                        <a id="trigger-tableNo">TABLE NO.</a>
+                    </li>
+                    <li>
+                        <a id="trigger-cart">CART</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="menu-circles" id="menu-circles">
+            <div class="small-circle c1 dessert" id="small-circle" data-item="dessert">
+                <img src="../components/menu/dessert-svgrepo-com.png" alt="dessert" id="dessert">
+            </div>
+            <div class="small-circle c2 bento" id="small-circle" data-item="bento">
+                <img src="../components/menu/bento-svgrepo-com.png" alt="bento" id="bento">
+            </div>
+            <div class="small-circle c3 ramen" id="small-circle" data-item="ramen">
+                <img src="../components/menu/ramen-svgrepo-com.png" alt="ramen" id="ramen">
+            </div>            
+            <div class="small-circle c4 desserts" id="small-circle" data-item="sushi">
+                <img src="../components/menu/sushi-svgrepo-com.png" alt="sushi" id="sushi">
+            </div>            
+            <div class="small-circle c5 Group" id="small-circle" data-item="group">
+                <img src="../components/menu/group-svgrepo-com.png" alt="group" id="group">
+            </div>            
+        </div>
+
+        <div class="menu-container">
+            <div class="menu" id="menu">
+                <!-- Feed Menu Items Dynamically via Menu.js -->
+
+            </div>
+        </div>
+
+        <div class="modal-container" id="modal-container" style="display:none;">
+            
+            <!-- About Us Modal -->
+            <div class="about-us-modal modal-content" id="aboutUsModal">
+                <span class="close">&times;</span>
+                <h1>About us:</h1>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. A deleniti id eveniet quaerat quas perspiciatis assumenda nobis laboriosam labore similique nulla consequatur, incidunt recusandae vitae, officia exercitationem iusto non corporis?</p>
+            </div>
+        
+            <!-- Table Modal -->
+            <div class="table-modal modal-content" id="tableModal">
+                <span class="close">&times;</span>
+                <h1>Table Information</h1>
+                <p>Details about the table here...</p>
+            </div>
+        
+            <!-- Cart Modal -->
+            <div class="cart-modal modal-content" id="cartModal">
+                <span class="close">&times;</span>
+                <h1>Your Cart</h1>
+                <p>Items in your cart...</p>
+            </div>
+        </div>
+    
+    <script src="modal.js"></script>
+    <script src="./script.js"></script>
+    <script src="menu.js"></script>
+</body> 
+</html>
