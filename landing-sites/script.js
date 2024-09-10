@@ -54,8 +54,6 @@ circles.forEach(circle => {
             this.querySelector('img').src = notActiveImage;  
         }
         checkActiveMenu();
-
-        console.log("Image changed to: " + this.querySelector('img').src);
     });
 });
 

@@ -1,27 +1,60 @@
-var ramenMenu = new Map();
-ramenMenu.set("Wagyu Ramen", { imgsrc: "../components/products/ramen/ramen.jpg", info: "wonton noodles", price: 150 });
-ramenMenu.set("Miso Ramen", { imgsrc: "../components/products/ramen/ramen.jpg", info: "wonton noodles spicy", price: 160 });
-ramenMenu.set("Beef Noodles", { imgsrc: "../components/products/ramen/ramen.jpg", info: "beef noodles", price: 200 });
+let ramenMenu = new Map();
+let sushiMenu = new Map();
+let bentoMenu = new Map();
+let dessertMenu = new Map();
+let groupMenu = new Map();
 
-var sushiMenu = new Map();
-sushiMenu.set("Nigirizushi", { imgsrc: "../components/products/sushi/sushi.jpg", info: "", price: 460 });
-sushiMenu.set("Maki", { imgsrc: "../components/products/sushi/sushi.jpg", info: "", price: 599 });
-sushiMenu.set("Sashimi", { imgsrc: "../components/products/sushi/sushi.jpg", info: "", price: 545 });
+function fetchMenuData() {
+    fetch('https://mocki.io/v1/0b9c3794-3a29-4199-977b-632fe9e848b6')
+        .then(response => response.json())
+        .then(data => {
+            data.ramenMenu.forEach(item => {
+                ramenMenu.set(item.name, {
+                    imgsrc: item.imgsrc,
+                    info: item.info,
+                    price: item.price
+                });
+            });
 
-var bentoMenu = new Map();
-bentoMenu.set("Wagyu Bento", { imgsrc: "../components/products/bento/bento.jpg", info: "", price: 365 });
-bentoMenu.set("Chicken Teriyaki Combo", { imgsrc: "../components/products/bento/bento.jpg", info: "", price: 355 });
-bentoMenu.set("Pork Tonkatsu Combo", { imgsrc: "../components/products/bento/bento.jpg", info: "", price: 365 });
+            data.sushiMenu.forEach(item => {
+                sushiMenu.set(item.name, {
+                    imgsrc: item.imgsrc,
+                    info: item.info,
+                    price: item.price
+                });
+            });
 
-var dessertMenu = new Map();
-dessertMenu.set("Element Glaze", { imgsrc: "../components/products/dessert/dessert.jpg", info: "", price: 255 });
-dessertMenu.set("Chocolate Sundae", { imgsrc: "../components/products/dessert/dessert.jpg", info: "", price: 265 });
-dessertMenu.set("Fudge Brown", { imgsrc: "../components/products/dessert/dessert.jpg", info: "", price: 250 });
+            data.bentoMenu.forEach(item => {
+                bentoMenu.set(item.name, {
+                    imgsrc: item.imgsrc,
+                    info: item.info,
+                    price: item.price
+                });
+            });
 
-var groupMenu = new Map();
-groupMenu.set("Element Glaze", { imgsrc: "../components/products/group/group.jpg", info: "", price: 255 });
-groupMenu.set("Chocolate Sundae", { imgsrc: "../components/products/group/group.jpg", info: "", price: 265 });
-groupMenu.set("Fudge Brown", { imgsrc: "../components/products/group/group.jpg", info: "", price: 250 });
+            data.dessertMenu.forEach(item => {
+                dessertMenu.set(item.name, {
+                    imgsrc: item.imgsrc,
+                    info: item.info,
+                    price: item.price
+                });
+            });
+
+            data.groupMenu.forEach(item => {
+                groupMenu.set(item.name, {
+                    imgsrc: item.imgsrc,
+                    info: item.info,
+                    price: item.price
+                });
+            });
+
+            // Render default menu (ramen)
+            renderMenu(ramenMenu, 'menu');
+        })
+        .catch(error => console.error('Error fetching menu data:', error));
+}
+
+fetchMenuData();
 
 function createMenuCard(dishName, dishData, index) {
     let cardDiv = document.createElement('div');
@@ -92,7 +125,6 @@ function renderMenu(menu, containerId) {
     });
 }
 
-
 function checkActiveMenu() {
     const circles = document.querySelectorAll('.small-circle');
     let activeMenu = null;
@@ -124,10 +156,7 @@ function checkActiveMenu() {
     }
 }
 
-
-// Initial Render
-renderMenu(ramenMenu, 'menu');
-
+// Quantity handling
 var quantities = [];
 
 function initializeQuantities(menu) {
